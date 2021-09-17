@@ -9,7 +9,7 @@ NAME = libft.a
 
 DIR = .
 
-OBJS = $(addprefix $(DIR)/,$(SRC:.c=.o))
+OBJS = $(addprefix $(DIR)/,$(SRC:%.c=%.o))
 OBJS_BONUS = $(addprefix $(DIR)/,$(SRC_BONUS:%.c=%.o))
 
 all: fclean re bonus
