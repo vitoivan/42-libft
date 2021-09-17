@@ -6,11 +6,10 @@
 /*   By: victor <vivan-de@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 08:44:36 by victor            #+#    #+#             */
-/*   Updated: 2021/08/30 21:27:29 by victor           ###   ########.fr       */
+/*   Updated: 2021/09/17 19:20:55 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
 
 static int	get_nword(const char *s, char c)
 {
