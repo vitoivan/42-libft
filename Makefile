@@ -17,10 +17,15 @@ all: fclean re bonus
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-fclean:
-	rm -f $(DIR)/*.o $(DIR)/libft.a
+clean:
+	rm -f $(DIR)/*.o $(DIR)/*.out
+
+fclean: clean
+	rm -f  $(DIR)/$(NAME)
 
 bonus: $(OBJS_BONUS)
 	$(AR) $(NAME) $(OBJS_BONUS)
 
 re: $(NAME)
+
+.PHONY: clean fclean all bonus re
