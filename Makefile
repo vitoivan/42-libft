@@ -12,7 +12,7 @@ DIR = .
 OBJS = $(addprefix $(DIR)/,$(SRC:%.c=%.o))
 OBJS_BONUS = $(addprefix $(DIR)/,$(SRC_BONUS:%.c=%.o))
 
-all: fclean re bonus
+all: $(NAME) bonus
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
@@ -26,6 +26,6 @@ fclean: clean
 bonus: $(OBJS_BONUS)
 	$(AR) $(NAME) $(OBJS_BONUS)
 
-re: $(NAME)
+re: fclean $(NAME)
 
 .PHONY: clean fclean all bonus re
