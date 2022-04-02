@@ -12,10 +12,10 @@ DIR = .
 OBJS = $(addprefix $(DIR)/,$(SRC:%.c=%.o))
 OBJS_BONUS = $(addprefix $(DIR)/,$(SRC_BONUS:%.c=%.o))
 
-all: $(NAME) bonus
+all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(OBJS_BONUS)
+	$(AR) $(NAME) $(OBJS) $(OBJS_BONUS)
 
 clean:
 	rm -f $(DIR)/*.o $(DIR)/*.out
