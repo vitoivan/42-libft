@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/22 22:19:04 by victor            #+#    #+#             */
-/*   Updated: 2022/08/06 16:29:11 by vivan-de         ###   ########.fr       */
+/*   Created: 2022/04/05 14:39:42 by vivan-de          #+#    #+#             */
+/*   Updated: 2022/08/07 08:28:56 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_print_hex(unsigned long int nbr, char c, int ***char_count, int pref)
 {
-	const char	*tmp1;
-	const char	*tmp2;
+	char	*nbr_str;
 
-	tmp1 = s1;
-	tmp2 = s2;
-	while (n)
+	if (pref != 0)
 	{
-		if (*tmp1 != *tmp2)
-			return ((unsigned char)*tmp1 - (unsigned char)*tmp2);
-		else if (!(*tmp1) || !(*tmp2))
-			break ;
-		tmp1++;
-		tmp2++;
-		n--;
+		if (c == 'x')
+			ft_print_str("0x", char_count);
+		else
+			ft_print_str("0X", char_count);
 	}
-	return (0);
+	nbr_str = ft_itohex(nbr, c);
+	ft_print_str(nbr_str, char_count);
+	free(nbr_str);
+	if (!nbr)
+		ft_print_char('0', char_count);
 }

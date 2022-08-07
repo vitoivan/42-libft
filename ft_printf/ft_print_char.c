@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/22 22:19:04 by victor            #+#    #+#             */
-/*   Updated: 2022/08/06 16:29:11 by vivan-de         ###   ########.fr       */
+/*   Created: 2022/04/05 12:13:18 by vivan-de          #+#    #+#             */
+/*   Updated: 2022/08/07 08:28:36 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_print_char(unsigned int c, int ***char_count)
 {
-	const char	*tmp1;
-	const char	*tmp2;
-
-	tmp1 = s1;
-	tmp2 = s2;
-	while (n)
-	{
-		if (*tmp1 != *tmp2)
-			return ((unsigned char)*tmp1 - (unsigned char)*tmp2);
-		else if (!(*tmp1) || !(*tmp2))
-			break ;
-		tmp1++;
-		tmp2++;
-		n--;
-	}
-	return (0);
+	ft_putchar_fd(c, 1);
+	***char_count += 1;
 }

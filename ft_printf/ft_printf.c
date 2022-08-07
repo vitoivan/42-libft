@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/22 22:19:04 by victor            #+#    #+#             */
-/*   Updated: 2022/08/06 16:29:11 by vivan-de         ###   ########.fr       */
+/*   Created: 2022/04/05 12:12:53 by vivan-de          #+#    #+#             */
+/*   Updated: 2022/08/07 08:29:28 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_printf(const char *str, ...)
 {
-	const char	*tmp1;
-	const char	*tmp2;
+	va_list	args;
+	int		i;
+	int		char_count;
 
-	tmp1 = s1;
-	tmp2 = s2;
-	while (n)
+	va_start(args, str);
+	i = 0;
+	char_count = 0;
+	while (str[i])
 	{
-		if (*tmp1 != *tmp2)
-			return ((unsigned char)*tmp1 - (unsigned char)*tmp2);
-		else if (!(*tmp1) || !(*tmp2))
-			break ;
-		tmp1++;
-		tmp2++;
-		n--;
+		if (str[i] == '%' && str[++i])
+			ft_print_arg((char *)str, args, &char_count, &i);
+		else
+		{
+			ft_putchar_fd(str[i], 1);
+			char_count++;
+			i++;
+		}
 	}
-	return (0);
+	va_end(args);
+	return (char_count);
 }
