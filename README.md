@@ -8,6 +8,3 @@
 <p align="center"> 
   <img align="center" src="https://github.com/vitoivan/vitoivan/raw/master/42_icons/libft.png" />
 </p>
-
-## Thoughts  
-   - This project in general was easy, but the major struggling here was avoid memory leaks (all funcions was tested with [Valgrind](https://valgrind.org/))  
