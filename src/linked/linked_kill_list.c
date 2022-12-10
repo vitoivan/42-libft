@@ -6,7 +6,7 @@
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 01:31:17 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 08:38:36 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	linked_kill_list(t_linked **list, t_linked_del_node_fn fn)
 		while ((*list)->size)
 		{
 			next_node = current_node->next;
-			linked_del_node(list, current_node, fn);
+			__linked_del_node(list, current_node, fn);
 			if (next_node)
 			{
 				current_node = next_node;

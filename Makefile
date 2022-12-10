@@ -8,7 +8,7 @@ TARGET = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_ispri
 
 PRINTF_TARGET = ft_printf/ft_helpers.c ft_printf/ft_itohex.c ft_printf/ft_print_arg.c ft_printf/ft_print_char.c  ft_printf/ft_print_conversion.c ft_printf/ft_print_hex.c ft_printf/ft_print_ptr.c ft_printf/ft_print_signed_digit.c ft_printf/ft_print_str.c ft_printf/ft_print_udigit.c ft_printf/ft_printf.c ft_printf/ft_uitoa.c
 
-LINKED_TARGET = linked_add_back.c linked_add_front.c linked_new_node.c linked_new_list.c linked_del_node.c linked_kill_list.c linked_map.c linked_filter.c
+LINKED_TARGET = linked_add_back.c linked_add_front.c linked_new_node.c linked_new_list.c __linked_del_node.c linked_kill_list.c linked_map.c linked_filter.c
 
 TESTS_TARGET = tests.c test_utils.c linked/test_add_back.c linked/test_add_front.c linked/test_kill_list.c linked/test_map.c linked/test_filter.c
 

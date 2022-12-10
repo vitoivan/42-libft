@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_del_node.c                                  :+:      :+:    :+:   */
+/*   __linked_del_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 01:12:44 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 08:38:44 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	use_del_fn(t_node *node, t_linked_del_node_fn fn)
 		fn(node->content);
 }
 
-void	linked_del_node(t_linked **list, t_node *node, t_linked_del_node_fn fn)
+void	__linked_del_node(t_linked **list, t_node *node,
+		t_linked_del_node_fn fn)
 {
 	if (!node || !list)
 		return ;
