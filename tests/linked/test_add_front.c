@@ -4,7 +4,7 @@ static char	*get_test_title(char *message)
 {
 	char	*prefix;
 
-	prefix = COLOR_BOLD BLU "\t[Linked_add_front] " RESET_COLOR REMOVE_BOLD;
+	prefix = COLOR_BOLD BLU "\t[linked_add_front] " RESET_COLOR REMOVE_BOLD;
 	return (ft_strjoin(prefix, message));
 }
 

@@ -6,7 +6,7 @@
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:20:51 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/09 20:47:35 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/09 23:15:34 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_linked			*linked_new_list(void);
 t_node				*linked_new_node(void *content);
 void				linked_add_back(t_linked **list, t_node *node);
 void				linked_add_front(t_linked **list, t_node *node);
-t_linked			*linked_copy(t_linked **list);
 void				*linked_del_node(t_linked_del_fn fn);
 void				*linked_kill_list(t_linked **list, t_linked_del_fn fn);
 void				*linked_map(t_linked **list, t_linked_map_fn fn);

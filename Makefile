@@ -10,7 +10,7 @@ PRINTF_TARGET = ft_printf/ft_helpers.c ft_printf/ft_itohex.c ft_printf/ft_print_
 
 LINKED_TARGET = linked_add_back.c linked_add_front.c linked_new_node.c linked_new_list.c
 
-TESTS_TARGET = linked/test_add_back.c linked/test_add_front.c tests.c test_utils.c
+TESTS_TARGET = tests.c test_utils.c linked/test_add_back.c linked/test_add_front.c
 
 LINKED = $(addprefix src/linked/,$(LINKED_TARGET:%.c=%.o))
 SRC = $(addprefix src/,$(TARGET:%.c=%.o))
