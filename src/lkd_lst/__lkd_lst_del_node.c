@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   __linked_del_node.c                                :+:      :+:    :+:   */
+/*   __lkd_lst_del_node.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 11:52:54 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:29:43 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-static int	validate_args(t_linked **list, t_node *node)
+static int	validate_args(t_lkd_lst **list, t_lkd_node *node)
 {
 	if (!node || !list)
 		return (0);
@@ -21,7 +21,7 @@ static int	validate_args(t_linked **list, t_node *node)
 	return (1);
 }
 
-static t_node	*get_the_last_one(t_node *node1, t_node *node2)
+static t_lkd_node	*get_the_last_one(t_lkd_node *node1, t_lkd_node *node2)
 {
 	if (node1)
 		return (node1);
@@ -30,18 +30,18 @@ static t_node	*get_the_last_one(t_node *node1, t_node *node2)
 	return (NULL);
 }
 
-static void	del(t_node *node, t_linked_del_node_fn fn)
+static void	del(t_lkd_node *node, t_lkd_lst_del_node_fn fn)
 {
 	if (fn)
 		fn(node->content);
 	free(node);
 }
 
-void	__linked_del_node(t_linked **list, t_node *node,
-		t_linked_del_node_fn fn)
+void	__lkd_lst_del_node(t_lkd_lst **list, t_lkd_node *node,
+		t_lkd_lst_del_node_fn fn)
 {
-	t_node	*the_last_one;
-	t_node	*prev_node;
+	t_lkd_node	*the_last_one;
+	t_lkd_node	*prev_node;
 
 	if (!validate_args(list, node))
 		return ;

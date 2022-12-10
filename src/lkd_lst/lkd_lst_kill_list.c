@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_kill_list.c                                 :+:      :+:    :+:   */
+/*   lkd_lst_kill_list.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 11:52:54 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:22:11 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-void		__linked_del_node(t_linked **list, t_node *node,
-				t_linked_del_node_fn fn);
+void		__lkd_lst_del_node(t_lkd_lst **list, t_lkd_node *node,
+				t_lkd_lst_del_node_fn fn);
 
-static int	validate_args(t_linked **list)
+static int	validate_args(t_lkd_lst **list)
 {
 	if (!list)
 		return (0);
@@ -24,27 +24,27 @@ static int	validate_args(t_linked **list)
 	return (1);
 }
 
-void	linked_kill_list(t_linked **list, t_linked_del_node_fn fn)
+void	lkd_lst_kill_list(t_lkd_lst **list, t_lkd_lst_del_node_fn fn)
 {
-	t_node	*current_node;
-	t_node	*next_node;
+	t_lkd_node	*current_lkd_node;
+	t_lkd_node	*next_lkd_node;
 
 	if (!validate_args(list))
 		return ;
-	current_node = (*list)->head;
+	current_lkd_node = (*list)->head;
 	if ((*list)->size && (*list)->head && (*list)->tail)
 	{
 		(*list)->tail->next = NULL;
 		(*list)->head->prev = NULL;
 		while ((*list)->size)
 		{
-			next_node = current_node->next;
-			__linked_del_node(list, current_node, fn);
-			if (next_node)
+			next_lkd_node = current_lkd_node->next;
+			__lkd_lst_del_node(list, current_lkd_node, fn);
+			if (next_lkd_node)
 			{
-				current_node = next_node;
-				if (next_node->next)
-					next_node = next_node->next;
+				current_lkd_node = next_lkd_node;
+				if (next_lkd_node->next)
+					next_lkd_node = next_lkd_node->next;
 			}
 		}
 	}

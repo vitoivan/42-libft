@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_add_back.c                                  :+:      :+:    :+:   */
+/*   lkd_lst_add_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 11:52:54 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:21:51 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-void	linked_add_back(t_linked **list, t_node *node)
+void	lkd_lst_add_front(t_lkd_lst **list, t_lkd_node *node)
 {
 	if (!list || !node)
 		return ;
@@ -29,7 +29,7 @@ void	linked_add_back(t_linked **list, t_node *node)
 		node->prev = (*list)->tail;
 		(*list)->tail->next = node;
 		(*list)->head->prev = node;
-		(*list)->tail = node;
+		(*list)->head = node;
 	}
 	(*list)->size++;
 }

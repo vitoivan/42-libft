@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_pop_last.c                                  :+:      :+:    :+:   */
+/*   lkd_lst_new_node.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 11:52:54 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:21:51 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-int		validate_args(t_linked **list);
-void	__linked_del_node(t_linked **list, t_node *node,
-			t_linked_del_node_fn fn);
-
-void	linked_pop_last(t_linked **list, t_linked_del_node_fn fn)
+t_lkd_node	*lkd_lst_new_node(void *content)
 {
-	t_node	*current_node;
-	t_node	*prev_node;
+	t_lkd_node	*new_node;
 
-	if (!validate_args(list))
-		return ;
-	current_node = (*list)->tail;
-	if (!current_node)
-		return ;
-	prev_node = current_node->prev;
-	__linked_del_node(list, current_node, fn);
-	if ((*list)->size > 1 && prev_node)
-	{
-		(*list)->tail = prev_node;
-		(*list)->head->prev = prev_node;
-		(*list)->tail->next = (*list)->head;
-	}
+	new_node = (t_lkd_node *)malloc(sizeof(t_lkd_node));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	return (new_node);
 }

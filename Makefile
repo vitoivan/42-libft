@@ -8,11 +8,11 @@ TARGET = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_ispri
 
 PRINTF_TARGET = ft_printf/ft_helpers.c ft_printf/ft_itohex.c ft_printf/ft_print_arg.c ft_printf/ft_print_char.c  ft_printf/ft_print_conversion.c ft_printf/ft_print_hex.c ft_printf/ft_print_ptr.c ft_printf/ft_print_signed_digit.c ft_printf/ft_print_str.c ft_printf/ft_print_udigit.c ft_printf/ft_printf.c ft_printf/ft_uitoa.c
 
-LINKED_TARGET = linked_add_back.c linked_add_front.c linked_new_node.c linked_new_list.c __linked_del_node.c linked_kill_list.c linked_map.c linked_filter.c linked_foreach.c utils.c linked_pop_first.c linked_pop_last.c linked_pop_at.c
+LINKED_TARGET = lkd_lst_add_back.c lkd_lst_add_front.c lkd_lst_new_node.c lkd_lst_new_list.c __lkd_lst_del_node.c lkd_lst_kill_list.c lkd_lst_map.c lkd_lst_filter.c lkd_lst_foreach.c utils.c lkd_lst_pop_first.c lkd_lst_pop_last.c lkd_lst_pop_at.c
 
-TESTS_TARGET = tests.c test_utils.c linked/test_add_back.c linked/test_add_front.c linked/test_kill_list.c linked/test_map.c linked/test_filter.c linked/test_pop_first.c linked/test_pop_last.c linked/test_pop_at.c
+TESTS_TARGET = tests.c test_utils.c lkd_lst/test_add_back.c lkd_lst/test_add_front.c lkd_lst/test_kill_list.c lkd_lst/test_map.c lkd_lst/test_filter.c lkd_lst/test_pop_first.c lkd_lst/test_pop_last.c lkd_lst/test_pop_at.c
 
-LINKED = $(addprefix src/linked/,$(LINKED_TARGET:%.c=%.o))
+LINKED = $(addprefix src/lkd_lst/,$(LINKED_TARGET:%.c=%.o))
 SRC = $(addprefix src/,$(TARGET:%.c=%.o))
 PRINTF = $(addprefix src/,$(PRINTF_TARGET:%.c=%.o))
 TESTS = $(addprefix tests/,$(TESTS_TARGET:%.c=%.o))
@@ -22,7 +22,7 @@ DIR = dist
 
 OBJS = $(addprefix ./$(DIR)/,$(SRC:%.c=%.o))
 PRINTF_OBJS = $(addprefix ./$(DIR)/,$(PRINTF:%.c=%.o))
-LINKED_OBJS = $(addprefix ./$(DIR)/,$(LINKED:%.c=%.o))
+lkd_lst_OBJS = $(addprefix ./$(DIR)/,$(LINKED:%.c=%.o))
 TESTS_OBJS = $(addprefix ./$(DIR)/,$(TESTS:%.c=%.o))
 
 TEST_DIR = $(DIR)/tests
@@ -38,11 +38,11 @@ test: $(NAME) $(TESTS_OBJS) $(TEST_DIR)
 $(TEST_DIR)/%.o: ./tests/%.c
 	$(CC) $(CFLAGS) $< -o $@
 
-$(TEST_DIR)/linked/%.o: ./tests/linked/%.c
+$(TEST_DIR)/lkd_lst/%.o: ./tests/lkd_lst/%.c
 	$(CC) $(CFLAGS) $< -o $@
 
-$(NAME): $(OBJS) $(PRINTF_OBJS) $(LINKED_OBJS)
-	$(AR) $(NAME) $(OBJS) $(PRINTF_OBJS) $(LINKED_OBJS)
+$(NAME): $(OBJS) $(PRINTF_OBJS) $(lkd_lst_OBJS)
+	$(AR) $(NAME) $(OBJS) $(PRINTF_OBJS) $(lkd_lst_OBJS)
 
 $(DIR)/src/%.o: ./src/%.c $(DIR)
 	$(CC) $(CFLAGS) $< -o $@
@@ -50,14 +50,14 @@ $(DIR)/src/%.o: ./src/%.c $(DIR)
 $(DIR)/ft_printf/%.o: ./src/ft_printf/%.c $(DIR) 
 	$(CC) $(CFLAGS) $< -o $@
 
-$(DIR)/src/linked/%.o: ./src/linked/%.c $(DIR) 
+$(DIR)/src/lkd_lst/%.o: ./src/lkd_lst/%.c $(DIR) 
 	$(CC) $(CFLAGS) $< -o $@
 
 $(DIR):
 	mkdir -p $(DIR)
 	mkdir -p $(DIR)/src/ft_printf
-	mkdir -p $(DIR)/src/linked
-	mkdir -p $(DIR)/tests/linked
+	mkdir -p $(DIR)/src/lkd_lst
+	mkdir -p $(DIR)/tests/lkd_lst
 
 clean:
 	rm -rf $(DIR)

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_new_list.c                                  :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 20:41:35 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 11:52:54 by vivan-de         ###   ########.fr       */
+/*   Created: 2022/12/10 09:08:13 by vivan-de          #+#    #+#             */
+/*   Updated: 2022/12/10 14:22:11 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-t_linked	*linked_new_list(void)
+int	validate_args(t_lkd_lst **list)
 {
-	t_linked	*list;
-
-	list = (t_linked *)malloc(sizeof(t_linked));
 	if (!list)
-		return (NULL);
-	list->head = NULL;
-	list->tail = NULL;
-	list->size = 0;
-	return (list);
+		return (0);
+	if (!*list)
+		return (0);
+	if (!(*list)->size)
+		return (0);
+	return (1);
 }

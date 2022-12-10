@@ -3,20 +3,20 @@
 int	main(void)
 {
 	ft_printf("\n\n-------------------------------\n\n");
-	test_linked_add_back();
+	test_lkd_lst_add_back();
 	ft_printf("\n\n-------------------------------\n\n");
-	test_linked_add_front();
+	test_lkd_lst_add_front();
 	ft_printf("\n\n-------------------------------\n\n");
-	test_linked_kill_list();
+	test_lkd_lst_kill_list();
 	ft_printf("\n\n-------------------------------\n\n");
-	test_linked_map();
+	test_lkd_lst_map();
 	ft_printf("\n\n-------------------------------\n\n");
-	test_linked_filter();
+	test_lkd_lst_filter();
 	ft_printf("\n\n-------------------------------\n\n");
-	test_linked_pop_first();
+	test_lkd_lst_pop_first();
 	ft_printf("\n\n-------------------------------\n\n");
-	test_linked_pop_last();
+	test_lkd_lst_pop_last();
 	ft_printf("\n\n-------------------------------\n\n");
-	test_linked_pop_at();
+	test_lkd_lst_pop_at();
 	ft_printf("\n\n-------------------------------\n\n");
 }

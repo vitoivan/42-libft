@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_add_front.c                                 :+:      :+:    :+:   */
+/*   lkd_lst_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 11:52:54 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:21:51 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-void	linked_add_front(t_linked **list, t_node *node)
+int			validate_args(t_lkd_lst **list);
+
+t_lkd_lst	*lkd_lst_map(t_lkd_lst **list, t_lkd_lst_map_fn fn)
 {
-	if (!list || !node)
-		return ;
-	if (!*list)
-		return ;
-	if ((*list)->head == NULL)
+	t_lkd_lst		*new_list;
+	t_lkd_node		*current_lkd_node;
+	unsigned int	i;
+	void			*content;
+
+	if (!validate_args(list))
+		return (NULL);
+	new_list = lkd_lst_new_list();
+	current_lkd_node = (*list)->head;
+	if (!new_list)
+		return (NULL);
+	i = 0;
+	while (i++ < (*list)->size)
 	{
-		(*list)->head = node;
-		(*list)->tail = node;
+		content = fn(current_lkd_node->content, i - 1);
+		lkd_lst_add_back(&new_list, lkd_lst_new_node(content));
+		current_lkd_node = current_lkd_node->next;
 	}
-	else
-	{
-		node->next = (*list)->head;
-		node->prev = (*list)->tail;
-		(*list)->tail->next = node;
-		(*list)->head->prev = node;
-		(*list)->head = node;
-	}
-	(*list)->size++;
+	return (new_list);
 }

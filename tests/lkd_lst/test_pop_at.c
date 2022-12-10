@@ -4,26 +4,26 @@ static char	*get_test_title(char *message)
 {
 	char	*prefix;
 
-	prefix = COLOR_BOLD BLU "\t[linked_pop_at] " RESET_COLOR REMOVE_BOLD;
+	prefix = COLOR_BOLD BLU "\t[lkd_lst_pop_at] " RESET_COLOR REMOVE_BOLD;
 	return (ft_strjoin(prefix, message));
 }
 
-void	test_linked_pop_at(void)
+void	test_lkd_lst_pop_at(void)
 {
-	t_linked *list;
+	t_lkd_lst *list;
 	char *message;
 	int numbers[5] = {123, 124, 5612, 213, 512};
 
-	list = linked_new_list();
-	linked_add_back(&list, linked_new_node(&numbers[0]));
-	linked_add_back(&list, linked_new_node(&numbers[1]));
-	linked_add_back(&list, linked_new_node(&numbers[2]));
-	linked_add_back(&list, linked_new_node(&numbers[3]));
-	linked_add_back(&list, linked_new_node(&numbers[4]));
+	list = lkd_lst_new_list();
+	lkd_lst_add_back(&list, lkd_lst_new_node(&numbers[0]));
+	lkd_lst_add_back(&list, lkd_lst_new_node(&numbers[1]));
+	lkd_lst_add_back(&list, lkd_lst_new_node(&numbers[2]));
+	lkd_lst_add_back(&list, lkd_lst_new_node(&numbers[3]));
+	lkd_lst_add_back(&list, lkd_lst_new_node(&numbers[4]));
 	{
-		ft_printf(COLOR_BOLD BLU "\nTesting linked_pop_at ..." REMOVE_BOLD RESET_COLOR "\n\n");
+		ft_printf(COLOR_BOLD BLU "\nTesting lkd_lst_pop_at ..." REMOVE_BOLD RESET_COLOR "\n\n");
 		{
-			linked_pop_at(&list, 3, NULL);
+			lkd_lst_pop_at(&list, 3, NULL);
 			message = get_test_title("The list must decrease the size in 1 after pop: ");
 			ft_printf(message);
 			free(message);
@@ -49,24 +49,24 @@ void	test_linked_pop_at(void)
 		}
 		{
 			message = get_test_title("popping_at until the head and tail of the list be NULL: ");
-			linked_pop_at(&list, 2, NULL);
-			linked_pop_at(&list, 2, NULL);
-			linked_pop_at(&list, 0, NULL);
-			linked_pop_at(&list, 0, NULL);
+			lkd_lst_pop_at(&list, 2, NULL);
+			lkd_lst_pop_at(&list, 2, NULL);
+			lkd_lst_pop_at(&list, 0, NULL);
+			lkd_lst_pop_at(&list, 0, NULL);
 			ft_printf(message);
 			free(message);
 			test_print_result(list->head == NULL && list->tail == NULL);
 		}
 		{
 			message = get_test_title("popping_at out of index: ");
-			linked_pop_at(&list, 1232, NULL);
-			linked_pop_at(&list, -123, NULL);
-			linked_pop_at(&list, 2, NULL);
-			linked_pop_at(&list, 0, NULL);
+			lkd_lst_pop_at(&list, 1232, NULL);
+			lkd_lst_pop_at(&list, -123, NULL);
+			lkd_lst_pop_at(&list, 2, NULL);
+			lkd_lst_pop_at(&list, 0, NULL);
 			ft_printf(message);
 			free(message);
 			test_print_result(list->head == NULL && list->tail == NULL);
 		}
-		linked_kill_list(&list, NULL);
+		lkd_lst_kill_list(&list, NULL);
 	}
 }

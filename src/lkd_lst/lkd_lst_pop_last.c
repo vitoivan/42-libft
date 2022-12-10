@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_map.c                                       :+:      :+:    :+:   */
+/*   lkd_lst_pop_last.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 11:55:45 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:22:11 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-int			validate_args(t_linked **list);
+int		validate_args(t_lkd_lst **list);
+void	__lkd_lst_del_node(t_lkd_lst **list, t_lkd_node *node,
+			t_lkd_lst_del_node_fn fn);
 
-t_linked	*linked_map(t_linked **list, t_linked_map_fn fn)
+void	lkd_lst_pop_last(t_lkd_lst **list, t_lkd_lst_del_node_fn fn)
 {
-	t_linked		*new_list;
-	t_node			*current_node;
-	unsigned int	i;
-	void			*content;
+	t_lkd_node	*current_lkd_node;
+	t_lkd_node	*prev_node;
 
 	if (!validate_args(list))
-		return (NULL);
-	new_list = linked_new_list();
-	current_node = (*list)->head;
-	if (!new_list)
-		return (NULL);
-	i = 0;
-	while (i++ < (*list)->size)
+		return ;
+	current_lkd_node = (*list)->tail;
+	if (!current_lkd_node)
+		return ;
+	prev_node = current_lkd_node->prev;
+	__lkd_lst_del_node(list, current_lkd_node, fn);
+	if ((*list)->size > 1 && prev_node)
 	{
-		content = fn(current_node->content, i - 1);
-		linked_add_back(&new_list, linked_new_node(content));
-		current_node = current_node->next;
+		(*list)->tail = prev_node;
+		(*list)->head->prev = prev_node;
+		(*list)->tail->next = (*list)->head;
 	}
-	return (new_list);
 }

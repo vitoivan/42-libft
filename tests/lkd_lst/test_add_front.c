@@ -4,11 +4,11 @@ static char	*get_test_title(char *message)
 {
 	char	*prefix;
 
-	prefix = COLOR_BOLD BLU "\t[linked_add_front] " RESET_COLOR REMOVE_BOLD;
+	prefix = COLOR_BOLD BLU "\t[lkd_lst_add_front] " RESET_COLOR REMOVE_BOLD;
 	return (ft_strjoin(prefix, message));
 }
 
-void	test_linked_add_front(void)
+void	test_lkd_lst_add_front(void)
 {
 	int first_insert = 32312;
 	int second_insert = 123;
@@ -16,12 +16,12 @@ void	test_linked_add_front(void)
 	int *content;
 	char *message;
 
-	t_linked *linked = linked_new_list();
+	t_lkd_lst *linked = lkd_lst_new_list();
 	// Testing one item on list
 	{
-		linked_add_front(&linked, linked_new_node((void *)&first_insert));
+		lkd_lst_add_front(&linked, lkd_lst_new_node((void *)&first_insert));
 
-		ft_printf(COLOR_BOLD BLU "\nTesting linked_add_front ..." REMOVE_BOLD RESET_COLOR "\n\n");
+		ft_printf(COLOR_BOLD BLU "\nTesting lkd_lst_add_front ..." REMOVE_BOLD RESET_COLOR "\n\n");
 
 		ft_printf(COLOR_BOLD MAG "\tTesting with one item" REMOVE_BOLD RESET_COLOR "\n\n");
 		{
@@ -48,7 +48,7 @@ void	test_linked_add_front(void)
 
 	// Testing two items on list
 	{
-		linked_add_front(&linked, linked_new_node((void *)&second_insert));
+		lkd_lst_add_front(&linked, lkd_lst_new_node((void *)&second_insert));
 		ft_printf(COLOR_BOLD MAG "\n\n\tTesting with two items" REMOVE_BOLD RESET_COLOR "\n\n");
 		{
 			message = get_test_title("should have the size of two: ");
@@ -95,7 +95,7 @@ void	test_linked_add_front(void)
 	// Test with three items
 	{
 		ft_printf(COLOR_BOLD MAG "\n\n\tTesting with three items" REMOVE_BOLD RESET_COLOR "\n\n");
-		linked_add_front(&linked, linked_new_node((void *)&third_insert));
+		lkd_lst_add_front(&linked, lkd_lst_new_node((void *)&third_insert));
 		{
 			message = get_test_title("The list must have size of three: ");
 			ft_printf(message);
@@ -159,5 +159,5 @@ void	test_linked_add_front(void)
 			test_print_result(*content == third_insert);
 		}
 	}
-	linked_kill_list(&linked, NULL);
+	lkd_lst_kill_list(&linked, NULL);
 }
