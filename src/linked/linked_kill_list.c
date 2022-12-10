@@ -6,7 +6,7 @@
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 08:41:07 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 10:43:42 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	linked_kill_list(t_linked **list, t_linked_del_node_fn fn)
 	if (!validate_args(list))
 		return ;
 	current_node = (*list)->head;
-	if ((*list)->size)
+	if ((*list)->size && (*list)->head && (*list)->tail)
 	{
 		(*list)->tail->next = NULL;
 		(*list)->head->prev = NULL;

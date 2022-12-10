@@ -6,22 +6,13 @@
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 08:11:17 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 09:09:36 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-static int	validate_args(t_linked **list)
-{
-	if (!list)
-		return (0);
-	if (!*list)
-		return (0);
-	if (!(*list)->size)
-		return (0);
-	return (1);
-}
+int			validate_args(t_linked **list);
 
 t_linked	*linked_map(t_linked **list, t_linked_map_fn fn)
 {

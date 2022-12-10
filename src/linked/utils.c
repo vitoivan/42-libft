@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_add_back.c                                  :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 09:24:17 by vivan-de         ###   ########.fr       */
+/*   Created: 2022/12/10 09:08:13 by vivan-de          #+#    #+#             */
+/*   Updated: 2022/12/10 09:08:44 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-void	linked_add_back(t_linked **list, t_node *node)
+int	validate_args(t_linked **list)
 {
-	if (!list || !node)
-		return ;
+	if (!list)
+		return (0);
 	if (!*list)
-		return ;
-	if ((*list)->head == NULL)
-	{
-		(*list)->head = node;
-		(*list)->tail = node;
-	}
-	else
-	{
-		node->next = (*list)->head;
-		node->prev = (*list)->tail;
-		(*list)->tail->next = node;
-		(*list)->head->prev = node;
-		(*list)->tail = node;
-	}
-	(*list)->size++;
+		return (0);
+	if (!(*list)->size)
+		return (0);
+	return (1);
 }

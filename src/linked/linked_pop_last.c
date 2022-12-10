@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_filter.c                                    :+:      :+:    :+:   */
+/*   linked_pop_last.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 09:08:53 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 11:06:06 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-int			validate_args(t_linked **list);
+int		validate_args(t_linked **list);
+void	__linked_del_node(t_linked **list, t_node *node,
+			t_linked_del_node_fn fn);
 
-t_linked	*linked_filter(t_linked **list, t_linked_filter_fn fn)
+void	linked_pop_last(t_linked **list, t_linked_del_node_fn fn)
 {
-	t_linked		*new_list;
-	t_node			*current_node;
-	unsigned int	i;
-	int				filter_result;
+	t_node	*current_node;
+	t_node	*prev_node;
 
 	if (!validate_args(list))
-		return (NULL);
-	new_list = linked_new_list();
-	current_node = (*list)->head;
-	if (!new_list)
-		return (NULL);
-	i = 0;
-	while (i++ < (*list)->size)
+		return ;
+	current_node = (*list)->tail;
+	if (!current_node)
+		return ;
+	prev_node = current_node->prev;
+	__linked_del_node(list, current_node, fn);
+	if ((*list)->size > 1 && prev_node)
 	{
-		filter_result = fn(current_node->content);
-		if (filter_result)
-			linked_add_back(&new_list, linked_new_node(current_node->content));
-		current_node = current_node->next;
+		(*list)->tail = prev_node;
+		(*list)->head->prev = prev_node;
+		(*list)->tail->next = (*list)->head;
 	}
-	return (new_list);
 }
