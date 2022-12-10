@@ -10,10 +10,11 @@ static char	*get_test_title(char *message)
 	return (ft_strjoin(prefix, message));
 }
 
-static int	even_filter_fn(void *content)
+static int	even_filter_fn(void *content, int ind)
 {
 	int	number;
 
+	(void)ind;
 	number = *(int *)content;
 	return (number % 2 == 0);
 }

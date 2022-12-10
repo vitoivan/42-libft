@@ -8,10 +8,11 @@ static char	*get_test_title(char *message)
 	return (ft_strjoin(prefix, message));
 }
 
-static void	*double_map_fn(void *content)
+static void	*double_map_fn(void *content, int ind)
 {
 	int	*number;
 
+	(void)ind;
 	number = malloc(sizeof(int));
 	*number = *(int *)content * 2;
 	return (void *)(number);

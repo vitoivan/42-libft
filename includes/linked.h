@@ -6,7 +6,7 @@
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:20:51 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 11:52:54 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 11:55:19 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef struct s_linked
 }					t_linked;
 
 typedef void		(*t_linked_del_node_fn)(void *content);
-typedef void		(*t_linked_foreach_fn)(void *content);
-typedef void		*(*t_linked_map_fn)(void *content);
-typedef int			(*t_linked_filter_fn)(void *content);
+typedef void		(*t_linked_foreach_fn)(void *content, int i);
+typedef void		*(*t_linked_map_fn)(void *content, int i);
+typedef int			(*t_linked_filter_fn)(void *content, int i);
 
 t_linked			*linked_new_list(void);
 t_node				*linked_new_node(void *content);
