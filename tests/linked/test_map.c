@@ -8,7 +8,7 @@ static char	*get_test_title(char *message)
 	return (ft_strjoin(prefix, message));
 }
 
-static void	*map_fn(void *content)
+static void	*double_map_fn(void *content)
 {
 	int	*number;
 
@@ -26,6 +26,7 @@ void	test_linked_map(void)
 	t_linked *list;
 	t_node *doubled_node;
 	t_node *normal_node;
+
 	i = 0;
 	while (i++ < numbers_qty)
 		expected_numbers[i - 1] = rand() / 2;
@@ -33,27 +34,32 @@ void	test_linked_map(void)
 	list = linked_new_list();
 	while (i++ < numbers_qty)
 		linked_add_back(&list, linked_new_node(&expected_numbers[i - 1]));
-	int *doubled_content;
-	int *normal_content;
 	char *message;
 
 	{
 		ft_printf(COLOR_BOLD BLU "\nTesting linked_map ..." REMOVE_BOLD RESET_COLOR "\n\n");
 		{
-			message = get_test_title("testing with an list of %d numbers: ");
+			message = get_test_title("The new list must have the same elements of the old list: ");
 			ft_printf(message, numbers_qty);
 			free(message);
-			doubled_list = linked_map(&list, map_fn);
+			doubled_list = linked_map(&list, double_map_fn);
 			i = 0;
 			doubled_node = doubled_list->head;
 			normal_node = list->head;
+			unsigned int count = 0;
 			while (i++ < doubled_list->size)
 			{
-				doubled_content = (int *)doubled_node->content;
-				normal_content = (int *)normal_node->content;
-				test_print_result_multiple(*doubled_content
-						/ 2 == *normal_content);
+				if (*(int *)doubled_node->content
+					/ 2 == *(int *)normal_node->content)
+					count++;
 			}
+			test_print_result(count == numbers_qty);
+		}
+		{
+			message = get_test_title("The new list must have the size of the old list: ");
+			ft_printf(message, numbers_qty);
+			free(message);
+			test_print_result(doubled_list->size == list->size);
 		}
 		linked_kill_list(&list, NULL);
 		linked_kill_list(&doubled_list, free);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_map.c                                       :+:      :+:    :+:   */
+/*   linked_filter.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 08:11:17 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 08:24:39 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ static int	validate_args(t_linked **list)
 	return (1);
 }
 
-t_linked	*linked_map(t_linked **list, t_linked_map_fn fn)
+t_linked	*linked_filter(t_linked **list, t_linked_filter_fn fn)
 {
 	t_linked		*new_list;
 	t_node			*current_node;
 	unsigned int	i;
-	void			*content;
+	int				filter_result;
 
 	if (!validate_args(list))
 		return (NULL);
@@ -39,8 +39,9 @@ t_linked	*linked_map(t_linked **list, t_linked_map_fn fn)
 	i = 0;
 	while (i++ < (*list)->size)
 	{
-		content = fn(current_node->content);
-		linked_add_back(&new_list, linked_new_node(content));
+		filter_result = fn(current_node->content);
+		if (filter_result)
+			linked_add_back(&new_list, linked_new_node(current_node->content));
 		current_node = current_node->next;
 	}
 	return (new_list);
