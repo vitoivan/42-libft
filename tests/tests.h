@@ -10,6 +10,7 @@ void	test_linked_map(void);
 void	test_linked_filter(void);
 void	test_linked_pop_first(void);
 void	test_linked_pop_last(void);
+void	test_linked_pop_at(void);
 
 void	test_print_result(int result);
 void	test_print_result_multiple(int result);

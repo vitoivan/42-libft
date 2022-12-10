@@ -17,4 +17,6 @@ int	main(void)
 	ft_printf("\n\n-------------------------------\n\n");
 	test_linked_pop_last();
 	ft_printf("\n\n-------------------------------\n\n");
+	test_linked_pop_at();
+	ft_printf("\n\n-------------------------------\n\n");
 }
