@@ -6,11 +6,14 @@
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 08:38:36 by vivan-de         ###   ########.fr       */
+/*   Updated: 2022/12/10 08:41:07 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
+
+void		__linked_del_node(t_linked **list, t_node *node,
+				t_linked_del_node_fn fn);
 
 static int	validate_args(t_linked **list)
 {
