@@ -27,10 +27,67 @@ void	test_linked_kill_list(void)
 
 	// Testing kill list with 5 items
 	{
-		linked_kill_list(&linked, NULL);
 		ft_printf(COLOR_BOLD BLU "\nTesting linked_kill_list ..." REMOVE_BOLD RESET_COLOR "\n\n");
 		{
-			message = get_test_title("Testing with 5 items ... (need to use valgrind)\n\n");
+			linked_kill_list(&linked, NULL);
+			message = get_test_title("Testing with 5 items (need to use valgrind)\n\n");
+			ft_printf(message);
+			free(message);
+		}
+		{
+			linked_kill_list(NULL, NULL);
+			message = get_test_title("Testing with NULL list (need to use valgrind)\n\n");
+			ft_printf(message);
+			free(message);
+		}
+		{
+			linked = linked_new_list();
+			linked_kill_list(&linked, NULL);
+			message = get_test_title("Testing with head and tail NULL (need to use valgrind)\n\n");
+			ft_printf(message);
+			free(message);
+		}
+		{
+			linked = linked_new_list();
+			linked_add_back(&linked, linked_new_node(&second_insert));
+			linked_kill_list(&linked, NULL);
+			message = get_test_title("Testing with one item (need to use valgrind)\n\n");
+			ft_printf(message);
+			free(message);
+		}
+		{
+			linked = linked_new_list();
+			linked_add_back(&linked, linked_new_node(&second_insert));
+			linked_add_back(&linked, linked_new_node(&third_insert));
+			linked_kill_list(&linked, NULL);
+			message = get_test_title("Testing with two items (need to use valgrind)\n\n");
+			ft_printf(message);
+			free(message);
+		}
+		{
+			linked = linked_new_list();
+			linked_add_back(&linked, linked_new_node(&second_insert));
+			linked_add_back(&linked, linked_new_node(&third_insert));
+			linked_kill_list(&linked, NULL);
+			message = get_test_title("Testing with three items (need to use valgrind)\n\n");
+			ft_printf(message);
+			free(message);
+		}
+		{
+			linked = linked_new_list();
+			linked_add_back(&linked,
+							linked_new_node(ft_strdup("Some random strimg")));
+			linked_kill_list(&linked, free);
+			message = get_test_title("Testing with strings\n\n");
+			ft_printf(message);
+			free(message);
+		}
+		{
+			linked = linked_new_list();
+			linked_add_back(&linked,
+							linked_new_node(ft_strdup("")));
+			linked_kill_list(&linked, free);
+			message = get_test_title("Testing with empty string\n\n");
 			ft_printf(message);
 			free(message);
 		}
