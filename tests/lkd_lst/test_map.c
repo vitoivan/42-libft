@@ -8,7 +8,7 @@ static char	*get_test_title(char *message)
 	return (ft_strjoin(prefix, message));
 }
 
-static void	*double_map_fn(void *content, t_byte ind)
+static void	*double_map_fn(void *content, t_uint ind)
 {
 	int	*number;
 

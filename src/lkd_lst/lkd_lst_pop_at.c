@@ -16,7 +16,7 @@ int			validate_args(t_lkd_lst **lst);
 void		__lkd_lst_del_node(t_lkd_lst **list, t_lkd_node *node,
 				t_lkd_lst_del_node_fn fn);
 
-static int	pop_in_extremes(t_lkd_lst **lst, t_byte i, t_lkd_lst_del_node_fn fn)
+static int	pop_in_extremes(t_lkd_lst **lst, t_uint i, t_lkd_lst_del_node_fn fn)
 {
 	if (i == 0)
 	{
@@ -31,7 +31,7 @@ static int	pop_in_extremes(t_lkd_lst **lst, t_byte i, t_lkd_lst_del_node_fn fn)
 	return (0);
 }
 
-static void	pop_thought_tail(t_lkd_lst **list, t_byte i,
+static void	pop_thought_tail(t_lkd_lst **list, t_uint i,
 		t_lkd_lst_del_node_fn fn)
 {
 	t_lkd_node	*current_lkd_node;
@@ -54,7 +54,7 @@ static void	pop_thought_tail(t_lkd_lst **list, t_byte i,
 	}
 }
 
-static void	pop_thought_head(t_lkd_lst **list, t_byte i,
+static void	pop_thought_head(t_lkd_lst **list, t_uint i,
 		t_lkd_lst_del_node_fn fn)
 {
 	t_lkd_node	*current_lkd_node;
@@ -77,7 +77,7 @@ static void	pop_thought_head(t_lkd_lst **list, t_byte i,
 	}
 }
 
-void	lkd_lst_pop_at(t_lkd_lst **lst, t_byte i, t_lkd_lst_del_node_fn fn)
+void	lkd_lst_pop_at(t_lkd_lst **lst, t_uint i, t_lkd_lst_del_node_fn fn)
 {
 	if (!validate_args(lst))
 		return ;
