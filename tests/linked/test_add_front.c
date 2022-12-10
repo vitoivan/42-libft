@@ -27,17 +27,20 @@ void	test_linked_add_front(void)
 		{
 			message = get_test_title("should increase size of list in one: ");
 			ft_printf(message);
+			free(message);
 			test_print_result(linked->size == 1);
 		}
 		{
 			message = get_test_title("The content of the first item of the list must be \"%d\": ");
 			ft_printf(message, first_insert);
+			free(message);
 			content = (int *)linked->head->content;
 			test_print_result(*content == first_insert);
 		}
 		{
 			message = get_test_title("The content of the last item of the list must be \"%d\": ");
 			ft_printf(message, first_insert);
+			free(message);
 			content = (int *)linked->tail->content;
 			test_print_result(*content == first_insert);
 		}
@@ -50,11 +53,13 @@ void	test_linked_add_front(void)
 		{
 			message = get_test_title("should have the size of two: ");
 			ft_printf(message);
+			free(message);
 			test_print_result(linked->size == 2);
 		}
 		{
 			message = get_test_title("The content of the first item of the list must be \"%d\": ");
 			ft_printf(message, second_insert);
+			free(message);
 			content = (int *)linked->head->content;
 			test_print_result(*content == second_insert);
 		}
@@ -62,23 +67,27 @@ void	test_linked_add_front(void)
 			message = get_test_title("The content of the second item of the list must be \"%d\": ");
 			content = (int *)linked->head->next->content;
 			ft_printf(message, first_insert);
+			free(message);
 			test_print_result(*content == first_insert);
 		}
 		{
 			message = get_test_title("The content of the tail of the list must be \"%d\": ");
 			ft_printf(message, first_insert);
+			free(message);
 			content = (int *)linked->tail->content;
 			test_print_result(*content == first_insert);
 		}
 		{
 			message = get_test_title("The last item of the list must appoint to the first using the next pointer: ");
 			ft_printf(message);
+			free(message);
 			content = (int *)linked->tail->next->content;
 			test_print_result(*content == second_insert);
 		}
 		{
 			message = get_test_title("The last item of the list must appoint to the first using the previous pointer: ");
 			ft_printf(message);
+			free(message);
 			content = (int *)linked->tail->prev->content;
 			test_print_result(*content == second_insert);
 		}
@@ -90,55 +99,65 @@ void	test_linked_add_front(void)
 		{
 			message = get_test_title("The list must have size of three: ");
 			ft_printf(message);
+			free(message);
 			test_print_result(linked->size == 3);
 		}
 		{
 			message = get_test_title("The first item of the list must be \"%d\": ");
 			ft_printf(message, third_insert);
+			free(message);
 			content = (int *)linked->head->content;
 			test_print_result(*content == third_insert);
 		}
 		{
 			message = get_test_title("The second item of the list must be \"%d\": ");
 			ft_printf(message, second_insert);
+			free(message);
 			content = (int *)linked->head->next->content;
 			test_print_result(*content == second_insert);
 		}
 		{
 			message = get_test_title("The last item of the list must be \"%d\": ");
 			ft_printf(message, third_insert);
+			free(message);
 			content = (int *)linked->tail->content;
 			test_print_result(*content == first_insert);
 		}
 		{
 			message = get_test_title("The next pointer of the third item of the list must appoint to the first item of the list: ");
 			ft_printf(message);
+			free(message);
 			content = (int *)linked->tail->next->content;
 			test_print_result(*content == third_insert);
 		}
 		{
 			message = get_test_title("The prev pointer of the first item of the list must appoint to the third item of the list: ");
 			ft_printf(message);
+			free(message);
 			content = (int *)linked->head->prev->content;
 			test_print_result(*content == first_insert);
 		}
 		{
 			message = get_test_title("Getting the third item of the list starting from head: ");
 			ft_printf(message);
+			free(message);
 			content = (int *)linked->head->next->next->content;
 			test_print_result(*content == first_insert);
 		}
 		{
 			message = get_test_title("Getting the first item of the list starting from tail: ");
 			ft_printf(message);
+			free(message);
 			content = (int *)linked->tail->prev->prev->content;
 			test_print_result(*content == third_insert);
 		}
 		{
 			message = get_test_title("Looping the entire list starting from the head and stopping in the head: ");
 			ft_printf(message);
+			free(message);
 			content = (int *)linked->head->next->next->next->content;
 			test_print_result(*content == third_insert);
 		}
 	}
+	linked_kill_list(&linked, NULL);
 }
