@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lkd_lst_filter.c                                    :+:      :+:    :+:   */
+/*   lkd_lst_filter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vivan-de <vivan-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 20:44:37 by vivan-de          #+#    #+#             */
-/*   Updated: 2022/12/10 14:21:51 by vivan-de         ###   ########.fr       */
+/*   Updated: 2023/02/28 07:28:08 by vivan-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_lkd_lst	*lkd_lst_filter(t_lkd_lst **list, t_lkd_lst_filter_fn fn)
 		filter_result = fn(current_lkd_node->content, i - 1);
 		if (filter_result)
 			lkd_lst_add_back(&new_list,
-								lkd_lst_new_node(current_lkd_node->content));
+				lkd_lst_new_node(current_lkd_node->content));
 		current_lkd_node = current_lkd_node->next;
 	}
 	return (new_list);
